@@ -27,27 +27,27 @@ export default function Hero() {
     >
       <motion.h1
         variants={item}
-        className="text-[clamp(3rem,9vw,6.5rem)] font-cormorant font-light tracking-[-0.02em] text-[#1D1D1F] leading-none mb-6"
+        className="text-[clamp(3rem,9vw,6.5rem)] font-cormorant font-light tracking-[-0.02em] text-ink leading-none mb-6"
       >
         Muhammed Junaid K
       </motion.h1>
 
       <motion.p
         variants={item}
-        className="text-[15px] font-dm font-light text-[rgba(29,29,31,0.5)] mb-12 max-w-[500px]"
+        className="text-[15px] font-dm font-light text-ink/50 mb-12 max-w-[500px]"
       >
         AI Engineer · Computer Vision · AWS · LLMs
       </motion.p>
 
       <motion.div variants={item} className="flex gap-8 items-center">
-        <a href="#projects" className="text-[13px] font-dm text-[#1D1D1F] hover-underline">
+        <a href="#projects" className="text-[13px] font-dm text-ink hover-underline">
           Work ↓
         </a>
         <a
           href="https://github.com/j22k"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[13px] font-dm text-[#1D1D1F] hover-underline"
+          className="text-[13px] font-dm text-ink hover-underline"
         >
           GitHub ↗
         </a>

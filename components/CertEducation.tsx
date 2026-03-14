@@ -15,7 +15,7 @@ export default function CertEducation() {
       className="max-w-[960px] mx-auto px-6 py-28"
     >
       <hr className="mb-12" />
-      <div className="text-[10px] font-dm font-light tracking-[0.25em] uppercase text-[rgba(29,29,31,0.4)] mb-12">
+      <div className="text-[10px] font-dm font-light tracking-[0.25em] uppercase text-ink/40 mb-12">
         05 &mdash; Certifications & Education
       </div>
 
@@ -23,9 +23,9 @@ export default function CertEducation() {
         {/* Certifications */}
         <div>
           <h3 className="font-cormorant italic text-[clamp(2rem,4vw,3rem)] mb-8">Certifications</h3>
-          <div className="flex flex-col border-t border-[rgba(29,29,31,0.08)]">
+          <div className="flex flex-col border-t border-ink/[0.08]">
             {visibleCerts.map((cert) => (
-              <div key={cert.id} className="group py-6 border-b border-[rgba(29,29,31,0.08)] flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 hover:bg-[rgba(29,29,31,0.03)] transition-colors duration-200 px-4 -mx-4">
+              <div key={cert.id} className="group py-6 border-b border-ink/[0.08] flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 hover:bg-ink/[0.03] transition-colors duration-200 px-4 -mx-4">
                 <div className="flex items-center gap-5">
                   {cert.badgeUrl && (
                     <div className="w-12 h-12 flex-shrink-0 opacity-80 mix-blend-multiply grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
@@ -37,7 +37,7 @@ export default function CertEducation() {
                     {cert.name}
                   </div>
                 </div>
-                <div className="font-dm font-light text-[13px] text-[rgba(29,29,31,0.4)] text-left sm:text-right ml-[68px] sm:ml-0">
+                <div className="font-dm font-light text-[13px] text-ink/40 text-left sm:text-right ml-[68px] sm:ml-0">
                   {cert.issuer} &middot; {cert.issuedDate}
                 </div>
               </div>
@@ -48,9 +48,9 @@ export default function CertEducation() {
         {/* Education */}
         <div>
           <h3 className="font-cormorant italic text-[clamp(2rem,4vw,3rem)] mb-8">Education</h3>
-          <div className="flex flex-col border-t border-[rgba(29,29,31,0.08)]">
+          <div className="flex flex-col border-t border-ink/[0.08]">
             {EDUCATION.map((edu) => (
-              <div key={edu.id} className="group py-6 border-b border-[rgba(29,29,31,0.08)] flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 hover:bg-[rgba(29,29,31,0.03)] transition-colors duration-200 px-4 -mx-4">
+              <div key={edu.id} className="group py-6 border-b border-ink/[0.08] flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 hover:bg-ink/[0.03] transition-colors duration-200 px-4 -mx-4">
                 <div className="flex items-center gap-5">
                   {edu.logoUrl && (
                     <div className="w-12 h-12 flex-shrink-0 opacity-80 mix-blend-multiply grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
@@ -62,12 +62,12 @@ export default function CertEducation() {
                     <span className="font-dm font-medium text-[15px] leading-snug">
                       {edu.degree}
                     </span>
-                    <span className="font-dm font-light text-[13px] text-[rgba(29,29,31,0.5)] mt-1">
+                    <span className="font-dm font-light text-[13px] text-ink/50 mt-1">
                       {edu.institution}, {edu.location}
                     </span>
                   </div>
                 </div>
-                <div className="font-dm font-light text-[13px] text-[rgba(29,29,31,0.4)] text-left sm:text-right whitespace-nowrap ml-[68px] sm:ml-0">
+                <div className="font-dm font-light text-[13px] text-ink/40 text-left sm:text-right whitespace-nowrap ml-[68px] sm:ml-0">
                   {edu.startYear} &mdash; {edu.endYear}
                   {edu.cgpa && <div className="mt-1">CGPA: {edu.cgpa}</div>}
                 </div>

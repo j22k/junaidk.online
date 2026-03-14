@@ -15,7 +15,7 @@ export default function Contact() {
       <h2 className="text-[clamp(2.5rem,6vw,4rem)] font-cormorant italic leading-[1.1] mb-6">
         Let's work together
       </h2>
-      <p className="font-dm font-light text-[16px] text-[rgba(29,29,31,0.55)] mb-12">
+      <p className="font-dm font-light text-[16px] text-ink/[0.55] mb-12">
         Open to AI Engineer & Full-Stack roles
       </p>
 

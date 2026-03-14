@@ -16,7 +16,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <main className="bg-[#F5F5F7] min-h-screen">
+    <main className="bg-paper min-h-screen">
       <Preloader onComplete={() => setIsLoading(false)} />
       
       {!isLoading && (

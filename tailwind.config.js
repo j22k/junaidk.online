@@ -1,5 +1,6 @@
 ﻿/** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,8 +9,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        ink: "var(--ink)",
-        paper: "var(--paper)",
+        ink: "rgb(var(--ink-rgb) / <alpha-value>)",
+        paper: "rgb(var(--paper-rgb) / <alpha-value>)",
       },
       fontFamily: {
         cormorant: ["\"Cormorant Garamond\"", "serif"],

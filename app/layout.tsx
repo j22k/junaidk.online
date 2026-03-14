@@ -1,5 +1,6 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import './globals.css';
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 export const metadata: Metadata = {
   title: 'Muhammed Junaid K — AI Engineer',
@@ -12,9 +13,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="bg-[#F5F5F7] text-[#1D1D1F]">
-        {children}
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <body className="bg-paper text-ink transition-colors duration-500">
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -44,7 +44,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
 
   return (
     <motion.div
-      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#F5F5F7]"
+      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-paper"
       initial={{ y: 0 }}
       animate={phase === 'slide' ? { y: '-100%' } : { y: 0 }}
       transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
@@ -58,7 +58,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.19 }}
-              className="text-[#1D1D1F] text-[clamp(3rem,8vw,6rem)] font-cormorant font-light tracking-wide m-0 leading-none absolute"
+              className="text-ink text-[clamp(3rem,8vw,6rem)] font-cormorant font-light tracking-wide m-0 leading-none absolute"
             >
               {WORDS[index]}
             </motion.h1>
@@ -70,7 +70,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
       <div className="absolute bottom-0 left-0 w-full h-[1px]">
         {phase === 'bar' && (
           <motion.div
-            className="h-full bg-[#1D1D1F]"
+            className="h-full bg-[var(--ink)]"
             initial={{ width: 0 }}
             animate={{ width: '100%' }}
             transition={{ duration: 1.2, ease: 'linear' }}

@@ -6,10 +6,19 @@
 
 @layer base {
   :root {
-    --ink: #1D1D1F;
-    --paper: #F5F5F7;
+    --ink-rgb: 29 29 31;
+    --paper-rgb: 245 245 247;
+    --ink: rgb(var(--ink-rgb));
+    --paper: rgb(var(--paper-rgb));
   }
-  
+
+  .dark {
+    --ink-rgb: 245 245 247;
+    --paper-rgb: 17 17 17;
+    --ink: rgb(var(--ink-rgb));
+    --paper: rgb(var(--paper-rgb));
+  }
+
   html, body {
     background-color: var(--paper);
     color: var(--ink);
@@ -30,7 +39,7 @@
 
   hr {
     border: none;
-    border-top: 1px solid rgba(29, 29, 31, 0.08);
+    border-top: 1px solid rgba(var(--ink-rgb), 0.08);
   }
 }
 

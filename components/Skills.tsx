@@ -14,7 +14,7 @@ export default function Skills() {
       className="max-w-[960px] mx-auto px-6 py-28"
     >
       <hr className="mb-12" />
-      <div className="text-[10px] font-dm font-light tracking-[0.25em] uppercase text-[rgba(29,29,31,0.4)] mb-12">
+      <div className="text-[10px] font-dm font-light tracking-[0.25em] uppercase text-ink/40 mb-12">
         04 &mdash; Skills
       </div>
 
@@ -24,7 +24,7 @@ export default function Skills() {
             <h3 className="font-dm font-medium text-[11px] uppercase tracking-wide">
               {category.label}
             </h3>
-            <p className="font-dm font-light text-[16px] text-[rgba(29,29,31,0.5)] leading-[1.8]">
+            <p className="font-dm font-light text-[16px] text-ink/50 leading-[1.8]">
               {category.items.join(', ')}
             </p>
           </div>
