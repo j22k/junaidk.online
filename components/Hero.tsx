@@ -1,0 +1,57 @@
+'use client';
+
+import { motion } from 'framer-motion';
+
+export default function Hero() {
+  const container: any = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const item: any = {
+    hidden: { opacity: 0, y: 16 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  };
+
+  return (
+    <motion.section
+      variants={container}
+      initial="hidden"
+      animate="show"
+      className="h-[100vh] flex flex-col justify-center items-center text-center px-6"
+    >
+      <motion.h1
+        variants={item}
+        className="text-[clamp(3rem,9vw,6.5rem)] font-cormorant font-light tracking-[-0.02em] text-[#1D1D1F] leading-none mb-6"
+      >
+        Muhammed Junaid K
+      </motion.h1>
+
+      <motion.p
+        variants={item}
+        className="text-[15px] font-dm font-light text-[rgba(29,29,31,0.5)] mb-12 max-w-[500px]"
+      >
+        AI Engineer · Computer Vision · AWS · LLMs
+      </motion.p>
+
+      <motion.div variants={item} className="flex gap-8 items-center">
+        <a href="#projects" className="text-[13px] font-dm text-[#1D1D1F] hover-underline">
+          Work ↓
+        </a>
+        <a
+          href="https://github.com/j22k"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[13px] font-dm text-[#1D1D1F] hover-underline"
+        >
+          GitHub ↗
+        </a>
+      </motion.div>
+    </motion.section>
+  );
+}
