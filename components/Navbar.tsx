@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Link from 'next/link';
+import { IconSun, IconMoon } from '@tabler/icons-react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,9 +51,10 @@ export default function Navbar() {
             {mounted && (
               <button
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="font-dm font-light text-[12px] text-ink/50 hover:text-ink transition-colors duration-300 tracking-wide ml-4"
+                className="text-ink/50 hover:text-ink transition-colors duration-300 ml-4 flex items-center justify-center p-1"
+                aria-label="Toggle Theme"
               >
-                [ {theme === 'dark' ? 'Light' : 'Dark'} ]
+                {theme === 'dark' ? <IconSun size={18} stroke={1.5} /> : <IconMoon size={18} stroke={1.5} />}
               </button>
             )}
           </div>
@@ -95,9 +97,10 @@ export default function Navbar() {
                   setTheme(theme === 'dark' ? 'light' : 'dark');
                   setIsOpen(false);
                 }}
-                className="font-dm font-light text-sm uppercase tracking-widest text-ink/60 hover:text-ink mt-8"
+                className="text-ink/60 hover:text-ink mt-8 flex items-center justify-center p-2"
+                aria-label="Toggle Theme"
               >
-                [ {theme === 'dark' ? 'Light' : 'Dark'} Mode ]
+                {theme === 'dark' ? <IconSun size={28} stroke={1.2} /> : <IconMoon size={28} stroke={1.2} />}
               </button>
             )}
           </div>

@@ -21,10 +21,10 @@ export default function Contact() {
 
       <div className="flex flex-col gap-6 items-center">
         <a 
-          href="mailto:muhammedjunaid@example.com" 
+          href="mailto:junaidkaliyadan@gmail.com" 
           className="font-dm font-normal text-[15px] text-ink hover-underline"
         >
-          muhammedjunaid@example.com ↗
+          junaidkaliyadan@gmail.com ↗
         </a>
         <a 
           href="https://linkedin.com/in/muhammed-junaid-k-90a6791b7" 
