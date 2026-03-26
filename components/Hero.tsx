@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { PROFILE } from '@/lib/data';
 
 export default function Hero() {
   const container: any = {
@@ -29,14 +30,14 @@ export default function Hero() {
         variants={item}
         className="text-[clamp(3rem,9vw,6.5rem)] font-cormorant font-light tracking-[-0.02em] text-ink leading-none mb-6"
       >
-        Muhammed Junaid K
+        {PROFILE.name}
       </motion.h1>
 
       <motion.p
         variants={item}
         className="text-[15px] font-dm font-light text-ink/50 mb-12 max-w-[500px]"
       >
-        AI Engineer · Computer Vision · AWS · LLMs
+        {PROFILE.role}
       </motion.p>
 
       <motion.div variants={item} className="flex gap-8 items-center">
@@ -44,7 +45,7 @@ export default function Hero() {
           Work ↓
         </a>
         <a
-          href="https://github.com/j22k"
+          href={PROFILE.github}
           target="_blank"
           rel="noopener noreferrer"
           className="text-[13px] font-dm text-ink hover-underline"

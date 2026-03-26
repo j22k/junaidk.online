@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { PROFILE } from '../lib/data';
 
 export default function Contact() {
   return (
@@ -21,26 +22,26 @@ export default function Contact() {
 
       <div className="flex flex-col gap-6 items-center">
         <a 
-          href="mailto:junaidkaliyadan@gmail.com" 
+          href={`mailto:${PROFILE.email}`} 
           className="font-dm font-normal text-[15px] text-ink hover-underline"
         >
-          junaidkaliyadan@gmail.com ↗
+          {PROFILE.email} ↗
         </a>
         <a 
-          href="https://linkedin.com/in/muhammed-junaid-k-90a6791b7" 
+          href={PROFILE.linkedin} 
           target="_blank" 
           rel="noopener noreferrer"
           className="font-dm font-normal text-[15px] text-ink hover-underline"
         >
-          linkedin.com/in/muhammed-junaid-k ↗
+          {PROFILE.linkedin} ↗
         </a>
         <a 
-          href="https://github.com/j22k" 
+          href={PROFILE.github} 
           target="_blank" 
           rel="noopener noreferrer"
           className="font-dm font-normal text-[15px] text-ink hover-underline"
         >
-          github.com/j22k ↗
+          {PROFILE.github} ↗
         </a>
       </div>
     </motion.section>

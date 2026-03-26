@@ -4,7 +4,7 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 import SeoJsonLd from '@/components/SeoJsonLd';
 
 export const metadata: Metadata = {
-  title: 'Muhammed Junaid K — AI Engineer',
+  title: 'Muhammed Junaid — AI Engineer',
   description: 'AI Engineer | Computer Vision | AWS | LLMs',
 };
 

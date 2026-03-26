@@ -2,11 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { PRELOADER_WORDS } from '@/lib/data';
 
-const WORDS = [
-  'Hello', 'നമസ്കാരം', 'مرحبا', 'Hola', 'こんにちは',
-  'Bonjour', 'नमस्ते', 'Ciao', '안녕하세요', 'Olá'
-];
+const WORDS = PRELOADER_WORDS;
 
 export default function Preloader({ onComplete }: { onComplete: () => void }) {
   const [index, setIndex] = useState(0);

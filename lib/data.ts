@@ -4,7 +4,7 @@
 
 export const PROFILE = {
   name: "Muhammed Junaid",
-  role: "AI Engineer | Full-Stack Builder",
+  role: "AI ML Engineer | Full-Stack Builder | AWS Certified",
   location: "Kochi, Kerala, India",
   bio: "I build intelligent systems where AI meets cloud infrastructure. Passionate about turning complex machine-learning research into production-grade products. When I'm not training models, I'm shipping features.",
   email: "junaidkaliyadan@gmail.com",
@@ -329,27 +329,27 @@ export const PRELOADER_WORDS = [
   "안녕하세요",      // Korean
   "Olá",          // Portuguese
 
-  "Hallo",        // German
-  "Привет",       // Russian
-  "你好",          // Chinese (Simplified)
-  "你好嗎",        // Chinese (Traditional / conversational)
-  "Selam",        // Turkish
-  "Sawubona",     // Zulu
-  "Jambo",        // Swahili
-  "Hej",          // Swedish
-  "Hei",          // Norwegian
-  "Halo",         // Indonesian
-  "Kamusta",      // Filipino (Tagalog)
-  "Salam",        // Persian/Urdu informal
-  "Ahoj",         // Czech/Slovak
-  "Merhaba",      // Turkish (formal/common)
-  "Shalom",       // Hebrew
-  "Xin chào",     // Vietnamese
-  "Sawasdee",     // Thai (transliterated)
-  "Ayubowan",     // Sinhala
-  "Vanakkam",     // Tamil
-  "Namaskara",    // Kannada
-  "Nomoshkar",    // Bengali
+  // "Hallo",        // German
+  // "Привет",       // Russian
+  // "你好",          // Chinese (Simplified)
+  // "你好嗎",        // Chinese (Traditional / conversational)
+  // "Selam",        // Turkish
+  // "Sawubona",     // Zulu
+  // "Jambo",        // Swahili
+  // "Hej",          // Swedish
+  // "Hei",          // Norwegian
+  // "Halo",         // Indonesian
+  // "Kamusta",      // Filipino (Tagalog)
+  // "Salam",        // Persian/Urdu informal
+  // "Ahoj",         // Czech/Slovak
+  // "Merhaba",      // Turkish (formal/common)
+  // "Shalom",       // Hebrew
+  // "Xin chào",     // Vietnamese
+  // "Sawasdee",     // Thai (transliterated)
+  // "Ayubowan",     // Sinhala
+  // "Vanakkam",     // Tamil
+  // "Namaskara",    // Kannada
+  // "Nomoshkar",    // Bengali
 ] as const;
 
 export const NAV_LINKS = [
