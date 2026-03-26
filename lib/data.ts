@@ -3,7 +3,7 @@
 // ─────────────────────────────────────────────
 
 export const PROFILE = {
-  name: "Muhammed Junaid K",
+  name: "Muhammed Junaid",
   role: "AI Engineer | Full-Stack Builder",
   location: "Kochi, Kerala, India",
   bio: "I build intelligent systems where AI meets cloud infrastructure. Passionate about turning complex machine-learning research into production-grade products. When I'm not training models, I'm shipping features.",
