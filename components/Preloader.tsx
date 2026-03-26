@@ -11,9 +11,27 @@ const WORDS = [
 export default function Preloader({ onComplete }: { onComplete: () => void }) {
   const [index, setIndex] = useState(0);
   const [phase, setPhase] = useState<'words' | 'bar' | 'slide'>('words');
+  const [mounted, setMounted] = useState(false);
+  const [skip, setSkip] = useState<boolean | null>(null);
 
+  // Only render on the client to avoid SSR/CSR markup mismatch
   useEffect(() => {
-    if (typeof window !== 'undefined' && sessionStorage.getItem('visited')) {
+    setMounted(true);
+  }, []);
+
+  // Check whether we've visited before; decide to skip preloader
+  useEffect(() => {
+    if (!mounted) return;
+    const visited = sessionStorage.getItem('visited');
+    if (visited) {
+      setSkip(true);
+      // give parent a tick to avoid calling during render
+      setTimeout(() => onComplete(), 0);
+      return;
+    }
+    setSkip(false);
+
+    if (sessionStorage.getItem('visited')) {
       onComplete();
       return;
     }
@@ -31,16 +49,20 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
       }, 380);
       return () => clearInterval(interval);
     } else if (phase === 'bar') {
-      setTimeout(() => setPhase('slide'), 1200);
+      const t = setTimeout(() => setPhase('slide'), 1200);
+      return () => clearTimeout(t);
     } else if (phase === 'slide') {
-      setTimeout(() => {
+      const t = setTimeout(() => {
         sessionStorage.setItem('visited', 'true');
         onComplete();
       }, 800);
+      return () => clearTimeout(t);
     }
-  }, [phase, onComplete]);
+  }, [mounted, phase, onComplete]);
 
-  if (typeof window !== 'undefined' && sessionStorage.getItem('visited')) return null;
+  // If we haven't yet determined skipping state, don't render anything
+  if (!mounted || skip === null) return null;
+  if (skip) return null;
 
   return (
     <motion.div

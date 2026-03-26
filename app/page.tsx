@@ -11,6 +11,7 @@ import Skills from '@/components/Skills';
 import CertEducation from '@/components/CertEducation';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import FAQ from '@/components/FAQ';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,6 +25,7 @@ export default function Home() {
           <Navbar />
           <Hero />
           <About />
+          <FAQ />
           <Experience />
           <Projects />
           <Skills />

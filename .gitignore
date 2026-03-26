@@ -37,3 +37,7 @@ next-env.d.ts
 
 # generated zip files from the automated assistant
 portfolio.zip
+
+# secrets
+.env
+/secret

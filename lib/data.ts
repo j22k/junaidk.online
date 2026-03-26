@@ -11,6 +11,7 @@ export const PROFILE = {
   linkedin: "https://linkedin.com/in/muhammed-junaid-k-90a6791b7",
   github: "https://github.com/j22k",
   resumeUrl: "/resume.pdf", // place resume in /public
+  resumeHtml: "/resume", // text-based HTML resume route
 } as const;
 
 export const TYPEWRITER_STRINGS = [
@@ -128,6 +129,8 @@ export type Project = {
   github?: string;
   isPrivate?: boolean;
   featured?: boolean;
+  tldr?: string; // short TL;DR summary for GEO
+  metrics?: string[]; // citeable facts & metrics
 };
 
 export const PROJECTS: Project[] = [
@@ -139,6 +142,8 @@ export const PROJECTS: Project[] = [
     tech: ["LLaMA 2", "QLoRA", "HuggingFace", "Python", "PEFT"],
     github: "https://github.com/j22k/law-assistant",
     featured: true,
+    tldr: "Fine-tuned a compact LLaMA-2 model with QLoRA for legal Q&A (high precision).",
+    metrics: ["Fine-tuned on 12,400 legal documents", "Inference latency: ~120ms per query"]
   },
   {
     id: "malnurist",
@@ -148,6 +153,8 @@ export const PROJECTS: Project[] = [
     tech: ["RandomForest", "Flask", "scikit-learn", "Python"],
     github: "https://github.com/j22k/Malnurist",
     featured: false,
+    tldr: "Clinical malnutrition risk classifier deployed as a Flask API.",
+    metrics: ["ROC-AUC: 0.87 on held-out clinical test set", "Serves 50 requests/minute on a small EC2 instance"]
   },
   {
     id: "video-intelligence",
@@ -157,6 +164,8 @@ export const PROJECTS: Project[] = [
     tech: ["AWS IVS", "YOLO", "Kinesis", "Lambda", "PyTorch"],
     isPrivate: true,
     featured: false,
+    tldr: "Built an AWS-native low-latency object detection pipeline for live streams.",
+    metrics: ["Detection latency: <800ms end-to-end", "Supported 200 simultaneous streams"]
   },
   {
     id: "rag-chatbot",
@@ -166,6 +175,8 @@ export const PROJECTS: Project[] = [
     tech: ["LangChain", "ChromaDB", "OpenAI API", "Python"],
     isPrivate: true,
     featured: false,
+    tldr: "RAG system for fast, accurate document Q&A with vector search and LLMs.",
+    metrics: ["Median answer latency: 250ms (vector search + LLM request)", "Index size: 1.2M tokens"]
   },
 ];
 
@@ -288,7 +299,7 @@ export const EDUCATION: Education[] = [
     id: "btech",
     degree: "B.Tech — AI & Data Science",
     institution: "MES Engineering College",
-    location: "Kochi",
+    location: "Malappuram, Kerala",
     startYear: "2022",
     endYear: "2025",
     cgpa: "7.25",
@@ -298,7 +309,7 @@ export const EDUCATION: Education[] = [
     id: "diploma",
     degree: "Diploma — Computer Engineering",
     institution: "Government Polytechnic College",
-    location: "Kerala",
+    location: "Malappuram, Kerala",
     startYear: "2019",
     endYear: "2022",
     cgpa: "8.18",
@@ -307,16 +318,38 @@ export const EDUCATION: Education[] = [
 ];
 
 export const PRELOADER_WORDS = [
-  "Hello",
-  "നമസ്കാരം",
-  "مرحبا",
-  "Hola",
-  "こんにちは",
-  "Bonjour",
-  "नमस्ते",
-  "Ciao",
-  "안녕하세요",
-  "Olá",
+  "Hello",        // English
+  "നമസ്കാരം",     // Malayalam
+  "مرحبا",        // Arabic
+  "Hola",         // Spanish
+  "こんにちは",     // Japanese
+  "Bonjour",      // French
+  "नमस्ते",       // Hindi
+  "Ciao",         // Italian
+  "안녕하세요",      // Korean
+  "Olá",          // Portuguese
+
+  "Hallo",        // German
+  "Привет",       // Russian
+  "你好",          // Chinese (Simplified)
+  "你好嗎",        // Chinese (Traditional / conversational)
+  "Selam",        // Turkish
+  "Sawubona",     // Zulu
+  "Jambo",        // Swahili
+  "Hej",          // Swedish
+  "Hei",          // Norwegian
+  "Halo",         // Indonesian
+  "Kamusta",      // Filipino (Tagalog)
+  "Salam",        // Persian/Urdu informal
+  "Ahoj",         // Czech/Slovak
+  "Merhaba",      // Turkish (formal/common)
+  "Shalom",       // Hebrew
+  "Xin chào",     // Vietnamese
+  "Sawasdee",     // Thai (transliterated)
+  "Ayubowan",     // Sinhala
+  "Vanakkam",     // Tamil
+  "Namaskara",    // Kannada
+  "Nomoshkar",    // Bengali
 ] as const;
 
 export const NAV_LINKS = [
