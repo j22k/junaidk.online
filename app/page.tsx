@@ -12,6 +12,7 @@ import Skills from '@/components/Skills';
 import CertEducation from '@/components/CertEducation';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import SnakeBackground from '@/components/SnakeBackground';
 
 const SECTIONS = [
   { id: 'hero', render: () => <Hero /> },
@@ -90,6 +91,7 @@ export default function Home() {
 
   return (
     <main className="bg-paper fixed inset-0 w-screen h-screen overflow-hidden">
+      <SnakeBackground />
       <Preloader onComplete={() => setIsLoading(false)} />
 
       {!isLoading && (
