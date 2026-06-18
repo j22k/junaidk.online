@@ -14,112 +14,9 @@ export const PROFILE = {
   resumeHtml: "/resume", // text-based HTML resume route
 } as const;
 
-export const TYPEWRITER_STRINGS = [
-  "AI Engineer",
-  "Computer Vision Expert",
-  "AWS ML Engineer",
-  "Full-Stack Builder",
-] as const;
 
-export const STATS = [
-  { value: 1, suffix: "+", label: "Years Experience" },
-  { value: 10, suffix: "+", label: "Projects Built" },
-  { value: 3, suffix: "", label: "Certifications" },
-  { value: 1304, suffix: "+", label: "LinkedIn Followers" },
-] as const;
 
-export type Experience = {
-  id: string;
-  role: string;
-  company: string;
-  location?: string;
-  startDate: string;
-  endDate: string;
-  tech: string[];
-  description: string;
-  type: "full-time" | "intern" | "volunteer";
-};
 
-export const EXPERIENCES: Experience[] = [
-  {
-    id: "zoftcares-ai",
-    role: "AI Engineer",
-    company: "ZoftCares",
-    startDate: "Dec 2025",
-    endDate: "Present",
-    tech: ["AWS IVS", "Kinesis", "Lambda", "SQS", "Bedrock", "YOLO", "PyTorch", "RAG"],
-    description:
-      "Designing and deploying production AI pipelines on AWS. Leading real-time video intelligence and RAG-based knowledge systems.",
-    type: "full-time",
-  },
-  {
-    id: "zoftcares-junior",
-    role: "Junior AI Engineer",
-    company: "ZoftCares",
-    startDate: "Jul 2025",
-    endDate: "Nov 2025",
-    tech: ["OpenCV", "YOLO", "TensorFlow", "Stable Diffusion", "RabbitMQ", "RAG"],
-    description:
-      "Developed computer vision models and generative AI features. Integrated async message queues for scalable inference.",
-    type: "full-time",
-  },
-  {
-    id: "zoftcares-intern-dubai",
-    role: "AI Intern",
-    company: "ZoftCares Dubai",
-    startDate: "Feb 2025",
-    endDate: "Jun 2025",
-    tech: ["Python", "OpenCV", "FastAPI", "Docker"],
-    description:
-      "Collaborated with the Dubai team on CV-based automation projects. Gained hands-on experience with cloud deployments.",
-    type: "intern",
-  },
-  {
-    id: "camerin",
-    role: "AI Intern",
-    company: "Camerin Innovate",
-    location: "Kochi",
-    startDate: "Jul 2024",
-    endDate: "Aug 2024",
-    tech: ["LSTM", "BERT", "TensorFlow", "Python"],
-    description:
-      "Built NLP and time-series models for hospital AI systems. Focused on patient outcome prediction using transformer-based architectures.",
-    type: "intern",
-  },
-  {
-    id: "iedc-cto",
-    role: "CTO",
-    company: "IEDC MESCE",
-    startDate: "Jul 2024",
-    endDate: "Apr 2025",
-    tech: ["Leadership", "Product Strategy", "KSUM"],
-    description:
-      "Led technology strategy for a KSUM-registered non-profit student entrepreneurship cell. Mentored teams on AI product development.",
-    type: "volunteer",
-  },
-  {
-    id: "adtec",
-    role: "Tech Lead",
-    company: "ADTEC-MESCE",
-    startDate: "Aug 2024",
-    endDate: "Apr 2025",
-    tech: ["Team Management", "AI", "Web Dev"],
-    description:
-      "Directed technical operations for the college tech association. Organised workshops, hackathons, and AI demonstrations.",
-    type: "volunteer",
-  },
-  {
-    id: "keltron",
-    role: ".NET Intern",
-    company: "Keltron",
-    startDate: "Nov 2021",
-    endDate: "Dec 2021",
-    tech: ["C#", ".NET", "SQL Server"],
-    description:
-      "Assisted in developing government software tools using the .NET framework during diploma studies.",
-    type: "intern",
-  },
-];
 
 export type Project = {
   id: string;
@@ -131,9 +28,32 @@ export type Project = {
   featured?: boolean;
   tldr?: string; // short TL;DR summary for GEO
   metrics?: string[]; // citeable facts & metrics
+  imageUrl?: string; // Optional custom image URL
 };
 
 export const PROJECTS: Project[] = [
+  {
+    id: "finance-flo",
+    name: "Finance-Flo",
+    description:
+      "AI-powered personal finance tracking application. Features an AI assistant capable of interpreting financial data, a full-stack dashboard with interactive charts, and a custom secure authentication system.",
+    tech: ["Next.js", "Tailwind CSS", "MongoDB", "Generative AI", "Anthropic SDK", "recharts"],
+    featured: true,
+    tldr: "Full-stack AI-integrated financial dashboard for tracking and analyzing personal finances.",
+    metrics: ["Integrated Gemini & Anthropic models", "Custom JWT auth with bcrypt"],
+    imageUrl: "/projects/finance-flo.png"
+  },
+  {
+    id: "mindme",
+    name: "MindMe",
+    description:
+      "AI-powered note-taking app that instantly categorizes notes. Uses a low-latency Llama 3.1 model to auto-tag notes based on context, syncing directly to a Supabase backend.",
+    tech: ["Next.js", "React 19", "Tailwind CSS", "Supabase", "Groq SDK", "Llama 3.1"],
+    featured: true,
+    tldr: "Instant AI note categorization using ultra-fast Groq inference.",
+    metrics: ["Sub-second classification latency", "Real-time sync with Supabase"],
+    imageUrl: "/projects/MindMe.png"
+  },
   {
     id: "law-assistant",
     name: "Law Assistant Chatbot",
@@ -179,6 +99,15 @@ export const PROJECTS: Project[] = [
     metrics: ["Median answer latency: 250ms (vector search + LLM request)", "Index size: 1.2M tokens"]
   },
 ];
+
+export const SERVICES = [
+  "AI Research",
+  "Computer Vision",
+  "LLM Fine-tuning",
+  "Cloud Architecture",
+  "Full-Stack AI Apps",
+  "RAG Systems",
+] as const;
 
 export type SkillCategory = {
   label: string;
@@ -231,7 +160,7 @@ export const CERTIFICATIONS: Certification[] = [
     issuedDate: "Mar 2026",
     expiresDate: "Mar 2029",
     credentialId: "86f08f6b-b7fe-4cb2-9fb9-a675521d6102",
-    badgeUrl: "https://images.credly.com/size/340x340/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png"
+    badgeUrl: "/badge.png"
   },
   {
     id: "aws-cloud-essentials",
@@ -283,79 +212,3 @@ export const CERTIFICATIONS: Certification[] = [
   },
 ];
 
-export type Education = {
-  id: string;
-  degree: string;
-  institution: string;
-  location: string;
-  startYear: string;
-  endYear: string;
-  cgpa: string;
-  logoUrl?: string;
-};
-
-export const EDUCATION: Education[] = [
-  {
-    id: "btech",
-    degree: "B.Tech — AI & Data Science",
-    institution: "MES Engineering College",
-    location: "Malappuram, Kerala",
-    startYear: "2022",
-    endYear: "2025",
-    cgpa: "7.25",
-    logoUrl: "/MESCE.png"
-  },
-  {
-    id: "diploma",
-    degree: "Diploma — Computer Engineering",
-    institution: "Government Polytechnic College",
-    location: "Malappuram, Kerala",
-    startYear: "2019",
-    endYear: "2022",
-    cgpa: "8.18",
-    logoUrl: "/SBTE.jpg"
-  },
-];
-
-export const PRELOADER_WORDS = [
-  "Hello",        // English
-  "നമസ്കാരം",     // Malayalam
-  "مرحبا",        // Arabic
-  "Hola",         // Spanish
-  "こんにちは",     // Japanese
-  "Bonjour",      // French
-  "नमस्ते",       // Hindi
-  "Ciao",         // Italian
-  "안녕하세요",      // Korean
-  "Olá",          // Portuguese
-
-  // "Hallo",        // German
-  // "Привет",       // Russian
-  // "你好",          // Chinese (Simplified)
-  // "你好嗎",        // Chinese (Traditional / conversational)
-  // "Selam",        // Turkish
-  // "Sawubona",     // Zulu
-  // "Jambo",        // Swahili
-  // "Hej",          // Swedish
-  // "Hei",          // Norwegian
-  // "Halo",         // Indonesian
-  // "Kamusta",      // Filipino (Tagalog)
-  // "Salam",        // Persian/Urdu informal
-  // "Ahoj",         // Czech/Slovak
-  // "Merhaba",      // Turkish (formal/common)
-  // "Shalom",       // Hebrew
-  // "Xin chào",     // Vietnamese
-  // "Sawasdee",     // Thai (transliterated)
-  // "Ayubowan",     // Sinhala
-  // "Vanakkam",     // Tamil
-  // "Namaskara",    // Kannada
-  // "Nomoshkar",    // Bengali
-] as const;
-
-export const NAV_LINKS = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" },
-] as const;

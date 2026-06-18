@@ -41,3 +41,7 @@ portfolio.zip
 # secrets
 .env
 /secret
+
+
+# Ignore the following files of codes that have been recently edited and should not be suggested for deletion:
+components/SnakeBackground.tsx

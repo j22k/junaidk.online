@@ -1,39 +1,49 @@
 'use client';
 
-import { useState } from 'react';
-import Preloader from '@/components/Preloader';
-import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Experience from '@/components/Experience';
-import Projects from '@/components/Projects';
-import Skills from '@/components/Skills';
-import CertEducation from '@/components/CertEducation';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
-import FAQ from '@/components/FAQ';
+import { useEffect, useRef } from 'react';
+import Loader from '@/components/Loader';
+import CustomCursor from '@/components/CustomCursor';
+import HeroSection from '@/components/HeroSection';
+import AboutSection from '@/components/AboutSection';
+import ToolkitSection from '@/components/ToolkitSection';
+import ContactSection from '@/components/ContactSection';
+import BestWorks from '@/components/BestWorks';
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
+  const mainRef = useRef<HTMLElement>(null);
+
+  // Intersection observer for scroll-triggered animations
+  useEffect(() => {
+    const els = document.querySelectorAll(
+      '.animate-on-scroll, .animate-from-left, .animate-from-right, .animate-scale'
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    els.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <main className="bg-paper min-h-screen">
-      <Preloader onComplete={() => setIsLoading(false)} />
-      
-      {!isLoading && (
-        <>
-          <Navbar />
-          <Hero />
-          <About />
-          <FAQ />
-          <Experience />
-          <Projects />
-          <Skills />
-          <CertEducation />
-          <Contact />
-          <Footer />
-        </>
-      )}
-    </main>
+    <>
+      <Loader />
+      <CustomCursor />
+      <main ref={mainRef} id="main-content" aria-label="Main content">
+        <HeroSection />
+        <AboutSection />
+        <BestWorks />
+        <ToolkitSection />
+        <ContactSection />
+      </main>
+    </>
   );
 }

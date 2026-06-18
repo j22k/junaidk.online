@@ -1,108 +1,133 @@
 'use client';
 
-import { useTheme } from 'next-themes';
-import { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { useState } from 'react';
-import Link from 'next/link';
-import { IconSun, IconMoon } from '@tabler/icons-react';
+import { useEffect, useRef, useState, useCallback } from 'react';
+import NavLinks from './NavComponent';
+import { PROFILE } from '@/lib/data';
+
+const SOCIALS = [
+  {
+    label: 'Resume',
+    href: PROFILE.resumeHtml,
+    icon: <img src="/Document.svg" alt="Resume" width={26} height={26} />,
+  },
+  {
+    label: 'LinkedIn',
+    href: PROFILE.linkedin,
+    icon: <img src="/LinkedIn.svg" alt="LinkedIn" width={26} height={26} />,
+  },
+  {
+    label: 'GitHub',
+    href: PROFILE.github,
+    icon: <img src="/GitHub.svg" alt="GitHub" width={26} height={26} />,
+  },
+];
+
+const NAV_ITEMS = [
+  { label: 'Home', id: 'hero' },
+  { label: 'About', id: 'about' },
+  { label: 'Projects', id: 'projects' },
+  { label: 'Toolkit', id: 'toolkit' },
+  { label: 'Contact', id: 'contact' },
+];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const navRef = useRef<HTMLElement>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (navRef.current) {
+        navRef.current.classList.toggle('scrolled', window.scrollY > 40);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  const LINKS = [
-    { label: 'About', href: '#about' },
-    { label: 'Work', href: '#experience' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Contact', href: '#contact' }
-  ];
+  const scrollTo = useCallback((id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    setMenuOpen(false);
+  }, []);
 
   return (
     <>
-      <motion.nav
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="fixed top-0 left-0 right-0 z-40 bg-transparent flex justify-center py-6 px-6"
-      >
-        <div className="w-full max-w-[960px] flex justify-between items-center">
-          <div className="flex items-center gap-6">
-            <Link href="/" className="font-cormorant italic text-[22px] text-ink leading-none">
-              JK
-            </Link>
-            <div className="hidden md:block w-[3px] h-[3px] rounded-full bg-ink/40" />
-          </div>
+      <nav ref={navRef} className="nav-root" role="navigation" aria-label="Main navigation" style={{ marginTop: '24px' }}>
+        <div className="nav-inner" style={{ height: 'auto' }}>
+          {/* Logo */}
+          <span className="nav-logo" style={{ animation: 'fadeIn 0.8s ease both' }}>
+            <span
+              className="font-hero"
+              style={{ fontSize: '28px', fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1 }}
+            >
+              JUNAID
+            </span>
+          </span>
 
-          <div className="hidden md:flex items-center gap-10">
-            {LINKS.map(link => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="font-dm font-light text-[12px] text-ink/50 hover:text-ink transition-colors duration-300 tracking-wide"
-              >
-                {link.label}
-              </Link>
-            ))}
-            {mounted && (
-              <button
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="text-ink/50 hover:text-ink transition-colors duration-300 ml-4 flex items-center justify-center p-1"
-                aria-label="Toggle Theme"
-              >
-                {theme === 'dark' ? <IconSun size={18} stroke={1.5} /> : <IconMoon size={18} stroke={1.5} />}
-              </button>
-            )}
-          </div>
+          {/* Desktop Nav Links */}
+          <NavLinks />
 
-          <button
-            onClick={() => setIsOpen(true)}
-            className="md:hidden flex flex-col gap-[4px] p-2"
-          >
-            <div className="w-6 h-[1px] bg-ink" />
-            <div className="w-6 h-[1px] bg-ink" />
-            <div className="w-6 h-[1px] bg-ink" />
-          </button>
+          {/* Social Icons + Hamburger */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div className="nav-socials" aria-label="Social links">
+              {SOCIALS.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={s.label}
+                  aria-label={s.label}
+                >
+                  {s.icon}
+                </a>
+              ))}
+            </div>
+
+            {/* Hamburger — only visible on mobile via CSS */}
+            <button
+              className="nav-hamburger"
+              onClick={() => setMenuOpen((p) => !p)}
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
+            >
+              <span className={`ham-line ${menuOpen ? 'open' : ''}`} />
+              <span className={`ham-line ${menuOpen ? 'open' : ''}`} />
+              <span className={`ham-line ${menuOpen ? 'open' : ''}`} />
+            </button>
+          </div>
         </div>
-      </motion.nav>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="fixed inset-0 z-50 bg-paper flex flex-col items-center justify-center p-6">
-          <button
-            onClick={() => setIsOpen(false)}
-            className="absolute top-8 right-8 p-2 text-ink/50 hover:text-ink text-sm font-dm"
-          >
-            [ Close ]
-          </button>
+        {/* Hand + Resume graphic */}
+        <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', paddingRight: '228px' }}>
+          <img src="/HandResume.svg" alt="" width={156} height={156} />
+        </div>
+      </nav>
 
-          <div className="flex flex-col gap-8 text-center">
-            {LINKS.map(link => (
-              <Link
-                key={link.label}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="font-cormorant text-4xl text-ink font-light tracking-wide"
+      {/* Mobile slide-down menu */}
+      {menuOpen && (
+        <div className="nav-mobile-menu" role="dialog" aria-label="Mobile navigation">
+          {NAV_ITEMS.map((item) => (
+            <button
+              key={item.id}
+              className="nav-mobile-link"
+              onClick={() => scrollTo(item.id)}
+            >
+              {item.label}
+            </button>
+          ))}
+          <div className="nav-mobile-socials">
+            {SOCIALS.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
               >
-                {link.label}
-              </Link>
+                {s.icon}
+              </a>
             ))}
-            {mounted && (
-              <button
-                onClick={() => {
-                  setTheme(theme === 'dark' ? 'light' : 'dark');
-                  setIsOpen(false);
-                }}
-                className="text-ink/60 hover:text-ink mt-8 flex items-center justify-center p-2"
-                aria-label="Toggle Theme"
-              >
-                {theme === 'dark' ? <IconSun size={28} stroke={1.2} /> : <IconMoon size={28} stroke={1.2} />}
-              </button>
-            )}
           </div>
         </div>
       )}
