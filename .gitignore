@@ -8,12 +8,8 @@
 # testing
 /coverage
 
-# next.js
-/.next/
-/out/
-
-# production
-/build
+# vite
+/dist/
 
 # misc
 .DS_Store
@@ -33,7 +29,6 @@ pnpm-debug.log*
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
 
 # generated zip files from the automated assistant
 portfolio.zip
@@ -41,7 +36,3 @@ portfolio.zip
 # secrets
 .env
 /secret
-
-
-# Ignore the following files of codes that have been recently edited and should not be suggested for deletion:
-components/SnakeBackground.tsx
